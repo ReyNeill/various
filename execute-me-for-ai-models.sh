@@ -3,7 +3,9 @@
 # Display menu options
 display_menu() {
     clear
+    echo "################################################"
     echo "Welcome to ClustAI"
+    echo "################################################"
     echo "Please select an AI model to install:"
     echo "1. Stable Diffusion Webui (Automatic1111)"
     echo "2. Model B"
@@ -15,17 +17,25 @@ display_menu() {
 install_model() {
     case $1 in
         1)
+            echo "################################################"
             echo "Installing Stable Diffusion Webui (Automatic1111)..."
+            echo "################################################"
             # Installation commands 
             apt update && apt upgrade 
+            echo "################################################"
             echo "Installing python..."
+            echo "################################################"
             apt install wget git python3 python3-venv libgl1 libglib2.0-0
+            echo "################################################"
             echo "Creating directory..."
+            echo "################################################"
             mkdir -p stable-diffusion-webui
             cd stable-diffusion-webui
             wget -q https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh
             chmod +x webui.sh
+            echo "################################################"
             echo "Dowloading and running model..."
+            echo "################################################"
             ./webui.sh --api --xformers
             ;;
         2)
@@ -82,5 +92,5 @@ while true; do
             echo "Invalid option, please try again."
             ;;
     esac
-    read -p "Press Enter to continue..."
+    read -p "Press Control+C to exit..."
 done

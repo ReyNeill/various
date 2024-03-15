@@ -1,10 +1,12 @@
 #!/bin/bash
+# Pretty print
+delimiter="################################################################"
 # Display menu options
 display_menu() {
     clear
-    echo "################################################################"
+    printf "\n%s\n" "${delimiter}"
     echo "Welcome to ClustAI"
-    echo "################################################################"
+    printf "\n%s\n" "${delimiter}"
     echo "Please select an AI model to install:"
     echo "1. Stable Diffusion Webui (Automatic1111)"
     echo "2. Model B"
@@ -16,29 +18,29 @@ display_menu() {
 install_model() {
     case $1 in
         1)
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             echo "Installing Stable Diffusion Webui (Automatic1111)..."
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             # Installation commands 
             apt update && apt upgrade 
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             echo "Installing python..."
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             apt install wget git python3 python3-venv libgl1 libglib2.0-0
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             echo "Creating directory..."
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             mkdir -p stable-diffusion-webui
             cd stable-diffusion-webui
             wget -q https://raw.githubusercontent.com/ReyNeill/stable-diffusion-webui/master/webui.sh
             chmod +x webui.sh
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             echo "Dowloading and running model..."
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             ./webui.sh --api --xformers
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             echo "This is an installation script, to Run the AI model again, go to it's directory and run ./webui.sh --api --xformers"
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             ;;
         2)
             echo "Installing Model B..."
@@ -56,24 +58,24 @@ install_model() {
 
 # Prompt user to install Cloudflare Quick Tunnel
 install_tunnel() {
-    echo "################################################################"
+    printf "\n%s\n" "${delimiter}"
     read -p "Do you want to install Cloudflare Quick Tunnel in order to access the model's UI on your own browser? (y/n): " choice
-    echo "################################################################"
+    printf "\n%s\n" "${delimiter}"
     case $choice in
         [Yy]*)
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             echo "Installing Cloudflare Quick Tunnel..."
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             # Installation commands for Cloudflare Quick Tunnel
             mkdir -p --mode=0755 /usr/share/keyrings
             curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
             echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared jammy main' | tee /etc/apt/sources.list.d/cloudflared.list
             apt-get update && apt-get install cloudflared
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             echo "Cloudflared Service installed"
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             echo "Run Cloudflared Quick Tunnel with the command: cloudflared tunnel --url {URL Provided by the local server {e.g http://127.0.0.1:8000}}"
-            echo "################################################################"
+            printf "\n%s\n" "${delimiter}"
             ;;
         [Nn]*)
             echo "Skipping Cloudflare Quick Tunnel installation."

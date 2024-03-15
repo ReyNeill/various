@@ -24,6 +24,7 @@ install_model() {
             mkdir -p stable-diffusion-webui
             cd stable-diffusion-webui
             wget -q https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh
+            chmod +x webui.sh
             echo "Dowloading and running model..."
             ./webui.sh --api --xformers
             ;;

@@ -33,6 +33,7 @@ install_tunnel() {
             echo "Cloudflared Service installed"
             printf "\n%s\n" "${delimiter}"
             echo "Run Cloudflared Quick Tunnel on a new terminal session with the command: cloudflared tunnel --url {URL Provided by the local server {e.g http://127.0.0.1:8000}}"
+            read -p "Press Enter to continue..."
             printf "\n%s\n" "${delimiter}"
             ;;
         [Nn]*)

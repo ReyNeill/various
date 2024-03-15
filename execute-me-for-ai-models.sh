@@ -5,7 +5,7 @@ delimiter="################################################################"
 display_menu() {
     clear
     printf "\n%s\n" "${delimiter}"
-    echo "Welcome to ClustAI"
+    printf "\e[1m\e[32mWelcome to ClustAI\n"
     printf "\n%s\n" "${delimiter}"
     echo "Please select an AI model to install:"
     echo "1. Stable Diffusion Webui (Automatic1111)"
@@ -19,7 +19,7 @@ install_model() {
     case $1 in
         1)
             printf "\n%s\n" "${delimiter}"
-            echo "Installing Stable Diffusion Webui (Automatic1111)..."
+            printf "\e[1m\e[32mIniciating installation process of Stable Diffusion Webui (Automatic1111)...\n"
             printf "\n%s\n" "${delimiter}"
             # Installation commands 
             apt update && apt upgrade 
@@ -39,7 +39,7 @@ install_model() {
             printf "\n%s\n" "${delimiter}"
             ./webui.sh --api --xformers
             printf "\n%s\n" "${delimiter}"
-            echo "This is an installation script, to Run the AI model again, go to it's directory and run ./webui.sh --api --xformers"
+            printf "\e[1m\e[32mThis is an installation script, to Run the AI model again, go to it's directory and run ./webui.sh --api --xformers\n"
             printf "\n%s\n" "${delimiter}"
             ;;
         2)
@@ -64,7 +64,7 @@ install_tunnel() {
     case $choice in
         [Yy]*)
             printf "\n%s\n" "${delimiter}"
-            echo "Installing Cloudflare Quick Tunnel..."
+            printf "\e[1m\e[32mInstalling Cloudflare Quick Tunnel...\n"
             printf "\n%s\n" "${delimiter}"
             # Installation commands for Cloudflare Quick Tunnel
             mkdir -p --mode=0755 /usr/share/keyrings
@@ -74,7 +74,7 @@ install_tunnel() {
             printf "\n%s\n" "${delimiter}"
             echo "Cloudflared Service installed"
             printf "\n%s\n" "${delimiter}"
-            echo "Run Cloudflared Quick Tunnel with the command: cloudflared tunnel --url {URL Provided by the local server {e.g http://127.0.0.1:8000}}"
+            printf "\e[1m\e[32mRun Cloudflared Quick Tunnel with the command: cloudflared tunnel --url {URL Provided by the local server {e.g http://127.0.0.1:8000}}\n"
             printf "\n%s\n" "${delimiter}"
             ;;
         [Nn]*)

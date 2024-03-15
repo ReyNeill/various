@@ -34,6 +34,7 @@ install_model() {
             cd stable-diffusion-webui
             wget -q https://raw.githubusercontent.com/ReyNeill/stable-diffusion-webui/master/webui.sh
             chmod +x webui.sh
+            source /etc/network_turbo
             printf "\n%s\n" "${delimiter}"
             echo "Dowloading and running model..."
             printf "\n%s\n" "${delimiter}"

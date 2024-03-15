@@ -31,7 +31,7 @@ install_model() {
             echo "################################################"
             mkdir -p stable-diffusion-webui
             cd stable-diffusion-webui
-            wget -q https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh
+            wget -q https://raw.githubusercontent.com/ReyNeill/stable-diffusion-webui/master/webui.sh
             chmod +x webui.sh
             echo "################################################"
             echo "Dowloading and running model..."

@@ -5,9 +5,9 @@ delimiter="################################################################"
 display_menu() {
     clear
     printf "\n%s\n" "${delimiter}"
-    echo "Welcome to ClustAI"
+    printf "\e[1m\e[32mWelcome to ClustAI\n"
+    printf "\e[1m\e[34mPlease select an AI model to Install.\e[0m"
     printf "\n%s\n" "${delimiter}"
-    echo "Please select an AI model to install:"
     echo "1. Stable Diffusion Webui (Automatic1111)"
     echo "2. Model B"
     echo "3. Model C"

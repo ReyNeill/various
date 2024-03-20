@@ -9,7 +9,7 @@ display_menu() {
     printf "\e[1m\e[34mPlease select an AI model to Install.\e[0m"
     printf "\n%s\n" "${delimiter}"
     echo "1. Stable Diffusion Webui (Automatic1111)"
-    echo "2. Model B"
+    echo "2. Oobabooga Text Generation WebUI"
     echo "3. Model C"
     echo "4. Exit"
 }
@@ -77,12 +77,29 @@ install_model() {
             printf "\n%s\n" "${delimiter}"
             ;;
         2)
-            echo "Installing Model B..."
-            # Installation commands for Model B here
+            printf "\n%s\n" "${delimiter}"
+            echo "Iniciating installation process of Oobabooga Text Generation WebUI..."
+            printf "\n%s\n" "${delimiter}"
+            read -p "Upgrade Nvidia Drivers if neccessary. Press Enter to Continue..."
+            # Installation commands
+            conda create -n textgen python=3.11
+            conda activate textgen
+            pip3 install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 --index-url https://download.pytorch.org/whl/cu121
+            conda install -y -c "nvidia/label/cuda-12.1.1" cuda-runtime
+            source /etc/network_turbo
+            git clone https://github.com/oobabooga/text-generation-webui
+            cd text-generation-webui
+            pip install -r requirements.txt
+            printf "\n%s\n" "${delimiter}"
+            echo "To restart the web UI in the future, just run the 'python server.py'"
+            echo "Remember to use cloudflared tunnel --url <provided url> on a new terminal"
+            read -p "In case you need to reinstall the requirements, you can simply delete that folder and start the web UI again. Press Enter to Continue..."
+            cd text-generation-webui
+            python server.py
             ;;
         3)
             echo "Installing Model C..."
-            # Installation commands for Model C here
+            # Installation commands
             ;;
         *)
             echo "Invalid option, please try again."

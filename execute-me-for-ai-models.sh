@@ -35,12 +35,13 @@ install_tunnel() {
             echo "Run Cloudflared Quick Tunnel on a new terminal session with the command: cloudflared tunnel --url {URL Provided by the local server {e.g http://127.0.0.1:8000}}"
             printf "\n%s\n" "${delimiter}"
             read -p "Press Enter to continue..."
-            printf "\n%s\n" "${delimiter}"
             ;;
         [Nn]*)
+            printf "\n%s\n" "${delimiter}"
             echo "Skipping Cloudflare Quick Tunnel installation."
             ;;
         *)
+            printf "\n%s\n" "${delimiter}"
             echo "Invalid choice, skipping Cloudflare Quick Tunnel installation."
             ;;
     esac
@@ -83,17 +84,18 @@ install_model() {
             read -p "Upgrade Nvidia Drivers if neccessary. Press Enter to Continue..."
             # Installation commands
             printf "\n%s\n" "${delimiter}"
-            echo "Creating Conda environment 'textgen' and torch"
+            echo "Creating Conda environment 'textgen' and installing torch"
             printf "\n%s\n" "${delimiter}"
             conda create -n textgen python=3.11
             conda activate textgen
+            source /etc/network_turbo
             pip3 install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 --index-url https://download.pytorch.org/whl/cu121
             conda install -y -c "nvidia/label/cuda-12.1.1" cuda-runtime
             source /etc/network_turbo
             printf "\n%s\n" "${delimiter}"
             echo "Cloning repo..."
             printf "\n%s\n" "${delimiter}"
-            read -p "To learn how to download models, visit https://github.com/oobabooga/text-generation-webui"
+            read -p "To learn how to download models, visit https://github.com/oobabooga/text-generation-webui. Press Enter to Continue..."
             git clone https://github.com/oobabooga/text-generation-webui
             cd text-generation-webui
             printf "\n%s\n" "${delimiter}"

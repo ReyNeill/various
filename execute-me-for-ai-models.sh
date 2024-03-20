@@ -99,7 +99,7 @@ install_model() {
             ;;
         3)
             echo "Installing Model C..."
-            # Installation commands 
+            # Installation commands
             ;;
         *)
             echo "Invalid option, please try again."

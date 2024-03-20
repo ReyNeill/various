@@ -82,15 +82,24 @@ install_model() {
             printf "\n%s\n" "${delimiter}"
             read -p "Upgrade Nvidia Drivers if neccessary. Press Enter to Continue..."
             # Installation commands
+            printf "\n%s\n" "${delimiter}"
+            echo "Creating Conda environment 'textgen' and torch"
+            printf "\n%s\n" "${delimiter}"
             conda create -n textgen python=3.11
             conda activate textgen
             pip3 install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 --index-url https://download.pytorch.org/whl/cu121
             conda install -y -c "nvidia/label/cuda-12.1.1" cuda-runtime
             source /etc/network_turbo
+            printf "\n%s\n" "${delimiter}"
+            echo "Cloning repo..."
+            printf "\n%s\n" "${delimiter}"
+            read -p "To learn how to download models, visit https://github.com/oobabooga/text-generation-webui"
             git clone https://github.com/oobabooga/text-generation-webui
             cd text-generation-webui
-            pip install -r requirements.txt
             printf "\n%s\n" "${delimiter}"
+            echo "Installing requirements..."
+            printf "\n%s\n" "${delimiter}"
+            pip install -r requirements.txt
             echo "To restart the web UI in the future, just run the 'python server.py'"
             echo "Remember to use cloudflared tunnel --url <provided url> on a new terminal"
             read -p "In case you need to reinstall the requirements, you can simply delete that folder and start the web UI again. Press Enter to Continue..."

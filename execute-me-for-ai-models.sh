@@ -102,6 +102,7 @@ install_model() {
             echo "Installing requirements..."
             printf "\n%s\n" "${delimiter}"
             pip install -r requirements.txt
+            printf "\n%s\n" "${delimiter}"
             echo "To restart the web UI in the future, just run the 'python server.py'"
             echo "Remember to use cloudflared tunnel --url <provided url> on a new terminal"
             read -p "In case you need to reinstall the requirements, you can simply delete that folder and start the web UI again. Press Enter to Continue..."

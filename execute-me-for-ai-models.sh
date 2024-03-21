@@ -95,7 +95,7 @@ install_model() {
             printf "\n%s\n" "${delimiter}"
             echo "Cloning repo..."
             printf "\n%s\n" "${delimiter}"
-            read -p "To learn how to download models, visit https://github.com/oobabooga/text-generation-webui. Press Enter to Continue..."
+            read -p "To learn how to download models, visit https://youtu.be/C-7jGYOGvy4?t=263. Press Enter to Continue..."
             git clone https://github.com/oobabooga/text-generation-webui
             cd text-generation-webui
             printf "\n%s\n" "${delimiter}"

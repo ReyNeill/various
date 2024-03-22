@@ -13,15 +13,7 @@ $(tput bold)2. proxychains4$(tput sgr0)
    Description: Changes proxy configuration to a specific command.
    You can see proxy configuration at: nano /etc/proxychains4.conf
    Usage: proxychains4 <rest of command>
-
-$(tput bold)3. command3$(tput sgr0)
-   Description:
-   Usage: 
-
-$(tput bold)4. command4$(tput sgr0)
-   Description: 
-   Usage: 
-   "
+"
 
 # Function to display the menu
 display_menu() {

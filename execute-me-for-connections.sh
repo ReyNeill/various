@@ -26,29 +26,44 @@ $(tput bold)4. command4$(tput sgr0)
 # Function to display the menu
 display_menu() {
     echo "Select a connection preset:"
-    echo "1. Setup and Proxys for Fast downloading speeds to GitHub and Huggingface"
+    echo "1. Setup and Proxys for Accelerated Downloads to GitHub and Huggingface"
     echo "2. Setup and Proxy changes for Unrestricted Internet Access"
-    echo "3. Disable current Setup configuration"
+    echo "3. Disable Current Setup Configuration"
 }
 
 # Function to execute commands based on user choice
 execute_option() {
     case $1 in
         1)
-            echo "Executing commands for Fast downloading speeds to GitHub and Huggingface..."
+            echo "Accelerating Downloads to GitHub and Huggingface..."
             # Commands
             source /etc/network_turbo > /dev/null
+            echo " Increased download speeds towards: 
+            - github.com
+            - githubusercontent.com
+            - githubassets.com
+            - huggingface.co"
             echo "Current connection preset: 1" 
-            echo "If downloads speeds lower, feel free to re-execute"
+            echo "If downloads speeds decrease, feel free to re-execute"
             ;;
         2)
-            echo "Executing commands for Option 2..."
+            echo "Unrestricting Internet Access..."
             # Commands
-
+            apt-get install autossh proxychains4 -y
+            autossh -M 0 -f -N -L 8443:localhost:8443 containers@szhk.rentan.ai
+            echo "" >> /root/autodl-tmp.bashrc
+            echo "export HTTP_PROXY=localhost:8443" >> /root/autodl-tmp/.bashrc
+            echo "export HTTPS_PROXY=localhost:8443" >> /root/autodl-tmp/.bashrc
+            echo "alias npm='proxychains4 npm'" >> /root/autodl-tmp/.bashrc
+            echo "alias python='proxychains4 python'" >> /root/autodl-tmp/.bashrc
+            echo "alias python3='proxychains4 python3'" >> /root/autodl-tmp/.bashrc
+            echo "alias yarn='proxychains4 yarn'" >> /root/autodl-tmp/.bashrc
+            echo "alias wget='proxychains4 wget'" >> /root/autodl-tmp/.bashrc
+            echo "For unrestricted command use, type: proxychains4 <rest of your command>"
             echo "Current connection preset: 2"
             ;;
         3)
-            echo "Executing commands for Option 3..."
+            echo "Disabling Current Setup Configuration..."
             # Commands
 
             echo "Current connection preset: 3 (Virgin)"

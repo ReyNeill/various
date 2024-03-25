@@ -28,22 +28,20 @@ execute_option() {
     case $1 in
         1)
             echo "Accelerating Downloads to GitHub and Huggingface..."
-            # Commands
-            source /etc/network_turbo > /dev/null
-            echo " Increased download speeds towards: 
+            source /etc/network_turbo &> /dev/null
+            echo "Increased download speeds towards:
             - github.com
             - githubusercontent.com
             - githubassets.com
             - huggingface.co"
-            echo "Current connection preset: 1" 
+            echo "Current connection preset: 1"
             echo "If downloads speeds decrease, feel free to re-execute"
             ;;
         2)
             echo "Unrestricting Internet Access..."
-            # Commands
-            apt-get install autossh proxychains4 -y
-            autossh -M 0 -f -N -L 8443:localhost:8443 containers@szhk.rentan.ai
-            echo "" >> /root/autodl-tmp.bashrc
+            apt-get install autossh proxychains4 -y &> /dev/null
+            autossh -M 0 -f -N -L 8443:localhost:8443 containers@szhk.rentan.ai &> /dev/null
+            echo "" >> /root/autodl-tmp/.bashrc
             echo "export HTTP_PROXY=localhost:8443" >> /root/autodl-tmp/.bashrc
             echo "export HTTPS_PROXY=localhost:8443" >> /root/autodl-tmp/.bashrc
             echo "alias npm='proxychains4 npm'" >> /root/autodl-tmp/.bashrc
@@ -56,15 +54,13 @@ execute_option() {
             ;;
         3)
             echo "Disabling Current Setup Configuration..."
-            # Commands
-
             echo "Current connection preset: 3 (Virgin)"
             ;;
         *)
-            echo "Funy man... Invalid option."
+            echo "Invalid option."
             exit 1
             ;;
-    }
+    esac
 }
 
 # Main menu logic 

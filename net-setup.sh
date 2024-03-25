@@ -2,14 +2,14 @@
 
 echo "
 +-----------------------------------+
-|   $(tput bold)Available Commands$(tput sgr0)   |
+|   $(tput setaf 2)Available Commands$(tput sgr0)   |
 +-----------------------------------+
 
-$(tput bold)1. network_turbo$(tput sgr0)
+$(tput setaf 2)1. network_turbo$(tput sgr0)
    Description: Speeds up downloads from GitHub and HuggingFace
    Usage: source /etc/network_turbo
 
-$(tput bold)2. proxychains4$(tput sgr0)
+$(tput setaf 2)2. proxychains4$(tput sgr0)
    Description: Changes proxy configuration to a specific command.
    You can see proxy configuration at: nano /etc/proxychains4.conf
    Usage: proxychains4 <rest of command>
@@ -18,6 +18,7 @@ $(tput bold)2. proxychains4$(tput sgr0)
 # Function to display the menu
 display_menu() {
     echo "Select a connection preset:"
+    echo ""
     echo "1. Setup and Proxys for Accelerated Downloads to GitHub and Huggingface"
     echo "2. Setup and Proxy changes for Unrestricted Internet Access"
     echo "3. Disable Current Setup Configuration"
@@ -36,6 +37,7 @@ execute_option() {
             - huggingface.co"
             echo "Current connection preset: 1"
             echo "If downloads speeds decrease, feel free to re-execute"
+            echo "+---------------------------+"
             ;;
         2)
             echo "Unrestricting Internet Access..."
@@ -51,13 +53,16 @@ execute_option() {
             echo "alias wget='proxychains4 wget'" >> /root/autodl-tmp/.bashrc
             echo "For unrestricted command use, type: proxychains4 <rest of your command>"
             echo "Current connection preset: 2"
+            echo "+---------------------------+"
             ;;
         3)
             echo "Disabling Current Setup Configuration..."
             echo "Current connection preset: 3 (Virgin)"
+            echo "+---------------------------+"
             ;;
         *)
             echo "Invalid option."
+            echo "+---------------------------+"
             exit 1
             ;;
     esac
@@ -68,6 +73,7 @@ execute_option() {
 display_menu
 
 read -p "Enter your choice (1-3): " choice
+echo ""
 
 case $choice in
     1|2|3)
@@ -80,5 +86,6 @@ case $choice in
         ;;
 esac
 
-echo "Changes completed."
+echo -e "\e[32mChanges completed.\e[0m"
+echo "+---------------------------+"
 exit 0
